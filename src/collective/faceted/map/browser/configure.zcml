@@ -18,4 +18,11 @@
     directory="static"
     />
 
+  <browser:page
+    name="faceted-map"
+    for="*"
+    class=".view.FacetedGeoJSON"
+    permission="zope2.View"
+    />
+
 </configure>
