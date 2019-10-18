@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='collective.faceted.map',
-    version='1.0a2.dev0',
+    version='1.0a2',
     description="Map view for eea.facetednavigation",
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
