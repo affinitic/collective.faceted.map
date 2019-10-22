@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0a3 (unreleased)
+1.0a3 (2019-10-22)
 ------------------
 
 - Add content lead image if it exists
