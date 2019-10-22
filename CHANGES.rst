@@ -5,6 +5,9 @@ Changelog
 1.0a3 (unreleased)
 ------------------
 
+- Add content lead image if it exists
+  [mpeeters]
+
 - Ensure that all markers are green
   [mpeeters]
 

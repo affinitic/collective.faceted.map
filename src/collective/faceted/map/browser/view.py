@@ -15,6 +15,24 @@ class FacetedGeoJSON(BrowserView):
             return u""
         return json.dumps({"type": "FeatureCollection", "features": features})
 
+    def _template(self, brain):
+        obj = brain.getObject()
+        if obj.image:
+            img_url = "{0}/@@images/image/thumb".format(brain.getURL())
+            template = ("<a href='{0}' title='{1}'><img src='{2}' alt='{1}' />"
+                        "<div style='width: 128px;text-align: center;"
+                        "margin-top: 0.5em;'>{1}</div></a>")
+            return template.format(
+                brain.getURL(),
+                brain.Title,
+                img_url,
+            )
+        else:
+            return "<a href='{0}' title='{1}'>{1}</a>".format(
+                brain.getURL(),
+                brain.Title,
+            )
+
     def _generate_point(self, brain):
         catalog = api.portal.get_tool(name="portal_catalog")
         data = catalog.getIndexDataForRID(brain.getRID())
@@ -27,10 +45,7 @@ class FacetedGeoJSON(BrowserView):
                 },
                 "id": brain.id,
                 "properties": {
-                    "popup": "<a href='{0}' title='{1}'>{1}</a>".format(
-                        brain.getURL(),
-                        brain.Title,
-                    )
+                    "popup": self._template(brain),
                     "color": "green",
                 },
             }
