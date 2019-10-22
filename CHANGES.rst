@@ -5,7 +5,8 @@ Changelog
 1.0a3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Ensure that all markers are green
+  [mpeeters]
 
 
 1.0a2 (2019-10-18)

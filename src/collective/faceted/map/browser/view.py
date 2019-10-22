@@ -31,5 +31,6 @@ class FacetedGeoJSON(BrowserView):
                         brain.getURL(),
                         brain.Title,
                     )
+                    "color": "green",
                 },
             }
