@@ -21,7 +21,7 @@ class CollectiveFacetedMapLayer(PloneSandboxLayer):
         self.loadZCML(name="testing.zcml", package=collective.faceted.map)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.faceted.map:default')
+        applyProfile(portal, "collective.faceted.map:default")
 
 
 COLLECTIVE_FACETED_MAP_FIXTURE = CollectiveFacetedMapLayer()
@@ -29,13 +29,13 @@ COLLECTIVE_FACETED_MAP_FIXTURE = CollectiveFacetedMapLayer()
 
 COLLECTIVE_FACETED_MAP_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_FACETED_MAP_FIXTURE,),
-    name='CollectiveFacetedMapLayer:IntegrationTesting',
+    name="CollectiveFacetedMapLayer:IntegrationTesting",
 )
 
 
 COLLECTIVE_FACETED_MAP_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_FACETED_MAP_FIXTURE,),
-    name='CollectiveFacetedMapLayer:FunctionalTesting',
+    name="CollectiveFacetedMapLayer:FunctionalTesting",
 )
 
 
@@ -45,5 +45,5 @@ COLLECTIVE_FACETED_MAP_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
-    name='CollectiveFacetedMapLayer:AcceptanceTesting',
+    name="CollectiveFacetedMapLayer:AcceptanceTesting",
 )
