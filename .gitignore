@@ -37,3 +37,5 @@ report.html
 !.gitkeep
 !.travis.yml
 !src/collective
+pyvenv.cfg
+share
