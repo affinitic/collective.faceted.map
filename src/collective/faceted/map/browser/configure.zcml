@@ -36,4 +36,11 @@
     class=".map.MapView"
     />
 
+  <browser:viewlet
+    name="mapviewlet"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+    class=".viewlet.MapViewlet"
+    permission="zope2.View"
+    />
+
 </configure>
