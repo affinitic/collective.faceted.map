@@ -47,6 +47,7 @@ setup(
         "setuptools",
         "z3c.jbot",
         "eea.facetednavigation",
+        "collective.geolocationbehavior",
     ],
     extras_require={
         "test": [
@@ -57,7 +58,6 @@ setup(
             "plone.testing>=5.0.0",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
-            "collective.geolocationbehavior",
         ]
     },
     entry_points="""
