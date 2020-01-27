@@ -6,25 +6,18 @@
 collective.faceted.map
 ======================
 
-Tell me what your product does
+This package add faceted map view
 
 Features
 --------
 
-- Can be bullet points
+- Faceted map based on collective.geolocationbehavior.
 
 
 Examples
 --------
 
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
-
-
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+#Todo add screenshots of map view
 
 
 Translations
@@ -32,7 +25,8 @@ Translations
 
 This product has been translated into
 
-- Klingon (thanks, K'Plai)
+- en
+- fr
 
 
 Installation
@@ -56,14 +50,6 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/collective.faceted.map/issues
 - Source Code: https://github.com/collective/collective.faceted.map
-- Documentation: https://docs.plone.org/foo/bar
-
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
 
 
 License

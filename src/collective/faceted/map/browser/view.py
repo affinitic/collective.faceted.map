@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from Products.Five import BrowserView
 from plone import api
+from Products.Five import BrowserView
 
 import json
 
@@ -17,20 +16,17 @@ class FacetedGeoJSON(BrowserView):
 
     def _template(self, brain):
         obj = brain.getObject()
-        if obj.image:
+        if obj.get("image", None):
             img_url = "{0}/@@images/image/thumb".format(brain.getURL())
-            template = ("<a href='{0}' title='{1}'><img src='{2}' alt='{1}' />"
-                        "<div style='width: 128px;text-align: center;"
-                        "margin-top: 0.5em;'>{1}</div></a>")
-            return template.format(
-                brain.getURL(),
-                brain.Title,
-                img_url,
+            template = (
+                "<a href='{0}' title='{1}'><img src='{2}' alt='{1}' />"
+                "<div style='width: 128px;text-align: center;"
+                "margin-top: 0.5em;'>{1}</div></a>"
             )
+            return template.format(brain.getURL(), brain.Title, img_url)
         else:
             return "<a href='{0}' title='{1}'>{1}</a>".format(
-                brain.getURL(),
-                brain.Title,
+                brain.getURL(), brain.Title
             )
 
     def _generate_point(self, brain):
@@ -44,8 +40,5 @@ class FacetedGeoJSON(BrowserView):
                     "coordinates": [data["longitude"], data["latitude"]],
                 },
                 "id": brain.id,
-                "properties": {
-                    "popup": self._template(brain),
-                    "color": "green",
-                },
+                "properties": {"popup": self._template(brain), "color": "green"},
             }
