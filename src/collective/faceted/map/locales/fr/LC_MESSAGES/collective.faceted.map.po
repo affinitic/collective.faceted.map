@@ -16,30 +16,30 @@ msgstr ""
 
 #: ../browser/configure.zcml:37
 msgid "Faceted map"
-msgstr ""
+msgstr "Vue faceted cartographique"
 
 #: ../configure.zcml:22
 msgid "Installs the collective.faceted.map add-on."
-msgstr ""
+msgstr "Installer le produit collective.faceted.map"
 
 #: ../configure.zcml:31
 msgid "Uninstalls the collective.faceted.map add-on."
-msgstr ""
+msgstr "Désinstaller le produit collective.faceted.map"
 
 #: ../configure.zcml:22
 msgid "collective.faceted.map"
-msgstr ""
+msgstr "collective.faceted.map"
 
 #: ../configure.zcml:31
 msgid "collective.faceted.map (uninstall)"
-msgstr ""
+msgstr "collective.faceted.map (désinstaller)"
 
 #. Default: "Display map"
 #: ../browser/map.pt:24
 msgid "display-map"
-msgstr ""
+msgstr "Afficher la carte"
 
 #. Default: "Hide map"
 #: ../browser/map.pt:23
 msgid "hide-map"
-msgstr ""
+msgstr "Masquer la carte"

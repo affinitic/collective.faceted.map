@@ -20,10 +20,10 @@
       <div class="eea-preview-items">
 
         <div class="button-map-content">
-          <button i18n:translate="" class="button-map hide-map">Hide map</button>
-          <button i18n:translate="" class="button-map show-map" style="display: none;">Display map</button>
+          <button i18n:translate="hide-map" class="button-map hide-map">Hide map</button>
+          <button i18n:translate="display-map" class="button-map show-map" style="display: none;">Display map</button>
         </div>
-        <div id="faceted-map" class="pat-leaflet" style="width: 100%; height:40em;" data-pat-leaflet='{
+        <div id="faceted-map-container" class="pat-leaflet" style="width: 100%; height:40em;" data-pat-leaflet='{
               "fullscreencontrol": true,
               "locatecontrol": true,
               "zoomcontrol": true,
@@ -37,10 +37,10 @@
           jQuery(document).ready(function($) {
             $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function() {
               setTimeout(function() {
-                require('pat-registry', 'pat-leaflet').scan($('div#faceted-map'));
+                require('pat-registry', 'pat-leaflet').scan($('div#faceted-map-container'));
                 $('.button-map').click(function() {
                   $('.button-map').toggle();
-                  $('#faceted-map').toggleClass('hidden');
+                  $('#faceted-map-container').toggleClass('hidden');
                 });
               }, 50);
             });
