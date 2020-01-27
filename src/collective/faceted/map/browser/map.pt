@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="collective.faceted.map">
+
+<body>
+<metal:content-core fill-slot="content-core">
+  <metal:block define-macro="content-core">
+    <div tal:define="
+        folderContents folderContents | python:context.getFolderContents();
+        Batch python:modules['Products.CMFPlone'].Batch;
+        b_start python:request.get('b_start', 0);
+        batch python:isinstance(folderContents, Batch) and folderContents or Batch(folderContents, 100, int(b_start), orphan=2);
+        map_view context/@@faceted-map-geojson;">
+
+      <div metal:use-macro="context/batch_macros/macros/navigation"/>
+
+      <div class="eea-preview-items">
+
+        <div class="button-map-content">
+          <button i18n:translate="" class="button-map hide-map">Hide map</button>
+          <button i18n:translate="" class="button-map show-map" style="display: none;">Display map</button>
+        </div>
+        <div id="faceted-map" class="pat-leaflet" style="width: 100%; height:40em;" data-pat-leaflet='{
+              "fullscreencontrol": true,
+              "locatecontrol": true,
+              "zoomcontrol": true,
+              "minimap": false,
+              "geosearch": false
+            }'
+            data-geojson=''
+            tal:attributes="data-geojson python:map_view.data_geo(batch)"></div>
+        <div id="faceted-results" class="no-map">
+        <script type="text/javascript">
+          jQuery(document).ready(function($) {
+            $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function() {
+              setTimeout(function() {
+                require('pat-registry', 'pat-leaflet').scan($('div#faceted-map'));
+                $('.button-map').click(function() {
+                  $('.button-map').toggle();
+                  $('#faceted-map').toggleClass('hidden');
+                });
+              }, 50);
+            });
+          });
+        </script>
+        <tal:entries repeat="brain batch">
+          <tal:entry tal:define="obj brain/getObject|nothing"
+                     tal:condition="python:obj is not None">
+
+
+            <div class="faceted-map-text"
+                 tal:define="portal_type brain/portal_type|string:;
+                   self nocall:context/@@faceted-map;
+                   useViewTypes brain/portal_properties/site_properties/typesUseViewActionInListings|python:[];
+                   useView python:portal_type in useViewTypes;">
+              <a tal:define="description brain/Description|string:;
+                             title brain/pretty_title_or_id|string:;
+                             is_image python: getattr(obj,'image', None);
+                             url brain/getURL|string:#"
+                 tal:attributes="href url;
+                                 title title">
+
+                <div class="items-content">
+                  <div class="image">
+                    <img style="border: none"
+                         tal:condition="is_image"
+                         tal:attributes="src string:${brain/getURL}/@@images/image"/>
+                  </div>
+                  <div class="text">
+                    <h4 tal:content="brain/pretty_title_or_id|string:">Title</h4>
+                    <div class="description">
+                      <div tal:replace="description"></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </tal:entry>
+        </tal:entries>
+        <span tal:condition="not: batch/sequence_length"
+              class="table_faceted_no_results"
+              i18n:domain="plone"
+              i18n:translate="description_no_results_found">No results were found.</span>
+        </div>
+      </div>
+
+      <div metal:use-macro="context/batch_macros/macros/navigation"/>
+
+    </div>
+
+  </metal:block>
+</metal:content-core>
+</body>
+</html>
+

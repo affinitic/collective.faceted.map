@@ -1,6 +1,7 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:faceted="http://namespaces.zope.org/faceted"
   xmlns:plone="http://namespaces.plone.org/plone"
   i18n_domain="collective.faceted.map">
 
@@ -19,10 +20,20 @@
     />
 
   <browser:page
-    name="faceted-map"
+    name="faceted-map-geojson"
     for="*"
     class=".view.FacetedGeoJSON"
     permission="zope2.View"
+    />
+
+  <include package="eea.facetednavigation" file="meta.zcml"/>
+
+  <faceted:view
+    name="faceted-map"
+    template="map.pt"
+    title="Faceted map"
+    permission="zope2.View"
+    class=".map.MapView"
     />
 
 </configure>
