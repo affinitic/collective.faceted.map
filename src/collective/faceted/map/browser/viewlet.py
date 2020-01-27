@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from eea.facetednavigation.config import ANNO_FACETED_LAYOUT
 from plone.app.layout.viewlets.common import ViewletBase
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.annotation.interfaces import IAnnotations
 
 
