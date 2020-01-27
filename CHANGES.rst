@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0a4 (unreleased)
+1.0a4 (2020-01-27)
 ------------------
 
 - Move faceted map to a viewlet to avoid reload of map on every refresh
