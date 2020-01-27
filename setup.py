@@ -48,6 +48,7 @@ setup(
         "z3c.jbot",
         "eea.facetednavigation",
         "collective.geolocationbehavior",
+        'plone.patternslib>1.1.0',
     ],
     extras_require={
         "test": [
