@@ -5,7 +5,11 @@ Changelog
 1.0a4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Move faceted map to a viewlet to avoid reload of map on every refresh
+  [mpeeters]
+
+- Add faceted map view.
+  [bsuttor]
 
 
 1.0a3 (2019-10-22)
