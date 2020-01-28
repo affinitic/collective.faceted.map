@@ -38,7 +38,7 @@
 
   <browser:viewlet
     name="mapviewlet"
-    manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
     class=".viewlet.MapViewlet"
     permission="zope2.View"
     />
