@@ -1,4 +1,4 @@
-<tal:condition tal:condition="view/available">
+<tal:condition tal:condition="view/available" xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="collective.faceted.map">
   <div class="button-map-content">
     <button i18n:translate="hide-map" class="button-map hide-map">Hide map</button>
     <button i18n:translate="display-map" class="button-map show-map" style="display: none;">Display map</button>
