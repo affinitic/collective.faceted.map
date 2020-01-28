@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0a5 (unreleased)
+1.0b1 (2020-01-28)
 ------------------
 
 - Add map_configuration property on viewlet.
