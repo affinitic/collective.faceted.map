@@ -5,6 +5,9 @@ Changelog
 1.0a5 (unreleased)
 ------------------
 
+- Add map_configuration property on viewlet.
+  [bsuttor]
+
 - Add i18n:domain on viewlet.
   [bsuttor]
 
