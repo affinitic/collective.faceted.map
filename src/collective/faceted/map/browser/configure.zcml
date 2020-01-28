@@ -26,6 +26,13 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    name="faceted-map-geojson-popup"
+    for="*"
+    class=".view.FacetedGeoJSONPopup"
+    permission="zope2.View"
+    />
+
   <include package="eea.facetednavigation" file="meta.zcml"/>
 
   <faceted:view

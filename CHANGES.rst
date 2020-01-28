@@ -5,7 +5,8 @@ Changelog
 1.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add faceted-map-geojson-popup view to have possibility to override pointer popup value.
+  [bsuttor]
 
 
 1.0b1 (2020-01-28)

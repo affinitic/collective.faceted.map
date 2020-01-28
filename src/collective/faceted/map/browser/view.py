@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from Products.Five import BrowserView
+from zope.component import queryMultiAdapter
 
 import json
 
@@ -15,19 +16,13 @@ class FacetedGeoJSON(BrowserView):
         return json.dumps({"type": "FeatureCollection", "features": features})
 
     def _template(self, brain):
-        obj = brain.getObject()
-        if obj.get("image", None):
-            img_url = "{0}/@@images/image/thumb".format(brain.getURL())
-            template = (
-                "<a href='{0}' title='{1}'><img src='{2}' alt='{1}' />"
-                "<div style='width: 128px;text-align: center;"
-                "margin-top: 0.5em;'>{1}</div></a>"
-            )
-            return template.format(brain.getURL(), brain.Title, img_url)
+        view = queryMultiAdapter(
+            (self.context, self.request), name="faceted-map-geojson-popup", default=None
+        )
+        if view:
+            return view.popup(brain)
         else:
-            return "<a href='{0}' title='{1}'>{1}</a>".format(
-                brain.getURL(), brain.Title
-            )
+            return ""
 
     def _generate_point(self, brain):
         catalog = api.portal.get_tool(name="portal_catalog")
@@ -42,3 +37,20 @@ class FacetedGeoJSON(BrowserView):
                 "id": brain.id,
                 "properties": {"popup": self._template(brain), "color": "green"},
             }
+
+
+class FacetedGeoJSONPopup(BrowserView):
+    def popup(self, brain):
+        obj = brain.getObject()
+        if obj.get("image", None):
+            img_url = "{0}/@@images/image/thumb".format(brain.getURL())
+            template = (
+                "<a href='{0}' title='{1}'><img src='{2}' alt='{1}' />"
+                "<div style='width: 128px;text-align: center;"
+                "margin-top: 0.5em;'>{1}</div></a>"
+            )
+            return template.format(brain.getURL(), brain.Title, img_url)
+        else:
+            return "<a href='{0}' title='{1}'>{1}</a>".format(
+                brain.getURL(), brain.Title
+            )
