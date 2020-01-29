@@ -26,11 +26,12 @@
                      tal:condition="python:obj is not None">
 
 
-            <div class="faceted-map-text"
+            <div class="faceted-map-text faceted-map-item"
                  tal:define="portal_type brain/portal_type|string:;
                    self nocall:context/@@faceted-map;
                    useViewTypes brain/portal_properties/site_properties/typesUseViewActionInListings|python:[];
-                   useView python:portal_type in useViewTypes;">
+                   useView python:portal_type in useViewTypes;"
+                 tal:attributes="data-index repeat/brain/index;">
               <a tal:define="description brain/Description|string:;
                              title brain/pretty_title_or_id|string:;
                              is_image python: getattr(obj,'image', None);
@@ -70,6 +71,14 @@
               $('#faceted-map-container').trigger('leaflet.refresh', JSON.parse(data));
             }
           });
+          $('.faceted-map-item').hover(
+            function() {
+              $('#faceted-map-container').trigger('leaflet.openPopup', $(this).data('index'));
+            },
+            function() {
+              $('#faceted-map-container').trigger('leaflet.closePopup', $(this).data('index'));
+            }
+          );
         });
       </script>
 

@@ -5,6 +5,9 @@ Changelog
 1.0b2 (unreleased)
 ------------------
 
+- Trigger the open of marker popups on hover
+  [mpeeters]
+
 - Add faceted-map-geojson-popup view to have possibility to override pointer popup value.
   [bsuttor]
 
