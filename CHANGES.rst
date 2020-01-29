@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0b3 (unreleased)
+1.0b3 (2020-01-29)
 ------------------
 
 - Do not use marker cluster
