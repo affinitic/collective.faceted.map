@@ -55,5 +55,6 @@ class MapViewlet(ViewletBase):
                 {"title": translate(_(l), context=self.request), "id": l}
                 for l in map_layers
             ],
+            "useCluster": False,
         }
         return json.dumps(config)

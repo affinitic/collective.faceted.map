@@ -5,7 +5,8 @@ Changelog
 1.0b3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not use marker cluster
+  [mpeeters]
 
 
 1.0b2 (2020-01-29)
