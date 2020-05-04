@@ -5,7 +5,8 @@ Changelog
 1.0b4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix an issue when there is no geolocated results to display
+  [mpeeters]
 
 
 1.0b3 (2020-01-29)

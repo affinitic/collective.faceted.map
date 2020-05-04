@@ -3,7 +3,7 @@
     <button i18n:translate="hide-map" class="button-map hide-map">Hide map</button>
     <button i18n:translate="display-map" class="button-map show-map" style="display: none;">Display map</button>
   </div>
-  <div id="faceted-map-container" class="pat-leaflet" style="width: 100%; height:40em;" data-pat-leaflet="${view/map_configuration}" 
+  <div id="faceted-map-container" class="pat-leaflet" style="width: 100%; height:40em;" data-pat-leaflet="${view/map_configuration}"
     data-geojson=''></div>
   <script type="text/javascript">
     jQuery(document).ready(function($) {
