@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0b4 (unreleased)
+1.0b4 (2020-05-04)
 ------------------
 
 - Fix an issue when there is no geolocated results to display
