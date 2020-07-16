@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0b5 (unreleased)
+1.0b5 (2020-07-16)
 ------------------
 
 - Handle content without geolocation for popups on hover
