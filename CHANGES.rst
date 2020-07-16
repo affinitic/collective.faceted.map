@@ -5,7 +5,8 @@ Changelog
 1.0b5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Handle content without geolocation for popups on hover
+  [mpeeters]
 
 
 1.0b4 (2020-05-04)

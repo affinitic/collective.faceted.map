@@ -13,6 +13,7 @@
         Batch python:modules['Products.CMFPlone'].Batch;
         b_start python:request.get('b_start', 0);
         batch python:isinstance(folderContents, Batch) and folderContents or Batch(folderContents, 100, int(b_start), orphan=2);
+        self nocall:context/@@faceted-map;
         map_view context/@@faceted-map-geojson;">
 
       <div metal:use-macro="context/batch_macros/macros/navigation"/>
@@ -28,10 +29,9 @@
 
             <div class="faceted-map-text faceted-map-item"
                  tal:define="portal_type brain/portal_type|string:;
-                   self nocall:context/@@faceted-map;
                    useViewTypes brain/portal_properties/site_properties/typesUseViewActionInListings|python:[];
                    useView python:portal_type in useViewTypes;"
-                 tal:attributes="data-index repeat/brain/index;">
+                 tal:attributes="data-index python:self.get_index(brain);">
               <a tal:define="description brain/Description|string:;
                              title brain/pretty_title_or_id|string:;
                              is_image python: getattr(obj,'image', None);
