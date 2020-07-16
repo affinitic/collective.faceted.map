@@ -8,6 +8,9 @@ Changelog
 - Handle content without geolocation for popups on hover
   [mpeeters]
 
+- Add a css class to faceted map element that indicate if the element is geolocated
+  [mpeeters]
+
 
 1.0b4 (2020-05-04)
 ------------------

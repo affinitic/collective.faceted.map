@@ -21,3 +21,9 @@ class MapView(BrowserView):
 
     def is_geolocated(self, brain):
         return isinstance(brain.latitude, float) and isinstance(brain.longitude, float)
+
+    def css_class(self, brain):
+        base = "faceted-map-text faceted-map-item {0}"
+        if self.is_geolocated(brain):
+            return base.format("geolocated")
+        return base.format("not-geolocated")

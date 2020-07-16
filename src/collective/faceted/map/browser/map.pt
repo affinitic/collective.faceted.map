@@ -27,11 +27,12 @@
                      tal:condition="python:obj is not None">
 
 
-            <div class="faceted-map-text faceted-map-item"
+            <div class=""
                  tal:define="portal_type brain/portal_type|string:;
                    useViewTypes brain/portal_properties/site_properties/typesUseViewActionInListings|python:[];
                    useView python:portal_type in useViewTypes;"
-                 tal:attributes="data-index python:self.get_index(brain);">
+                 tal:attributes="data-index python:self.get_index(brain);
+                                 class python:self.css_class(brain)">
               <a tal:define="description brain/Description|string:;
                              title brain/pretty_title_or_id|string:;
                              is_image python: getattr(obj,'image', None);
