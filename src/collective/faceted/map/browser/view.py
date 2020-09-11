@@ -12,7 +12,7 @@ class FacetedGeoJSON(BrowserView):
         elements = [self._generate_point(brain) for brain in batch]
         features = [e for e in elements if e]
         if not features:
-            return json.dumps({"type": "FeatureCollection", "features": []})
+            return ""
         return json.dumps({"type": "FeatureCollection", "features": features})
 
     def _template(self, brain):

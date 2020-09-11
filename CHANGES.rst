@@ -5,7 +5,8 @@ Changelog
 1.0b6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Avoid an error when there is no marker to display
+  [mpeeters]
 
 
 1.0b5 (2020-07-16)

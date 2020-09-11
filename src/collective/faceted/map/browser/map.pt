@@ -68,11 +68,13 @@
         jQuery(document).ready(function($) {
           $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function() {
             var data = $("#faceted-results-items").attr("data-geojson");
-            if ( typeof data != "undefined" ) {
+            if ( typeof data != "undefined"  && data ) {
               data = JSON.parse(data);
               if ( data.features.length > 0 ) {
                 $('#faceted-map-container').trigger('leaflet.refresh', data);
               }
+            } else {
+                $('#faceted-map-container').trigger('leaflet.refresh', data);
             }
           });
           $('.faceted-map-item').hover(
