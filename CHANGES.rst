@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0b6 (unreleased)
+1.0b6 (2020-09-11)
 ------------------
 
 - Avoid an error when there is no marker to display
