@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0b7 (unreleased)
+1.0b7 (2022-06-01)
 ------------------
 
 - Add Github Action / fix buildout & tests
