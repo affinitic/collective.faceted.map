@@ -5,7 +5,12 @@ Changelog
 1.0b7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add Github Action / fix buildout & tests
+  [laulaz]
+
+- Include missing collective.geolocationbehavior
+  Otherwise, its profile is not available (as a dependency)
+  [laulaz]
 
 
 1.0b6 (2020-09-11)
