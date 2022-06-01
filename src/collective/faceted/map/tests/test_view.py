@@ -9,6 +9,7 @@ from plone.app.testing import TEST_USER_ID
 from plone.formwidget.geolocation.geolocation import Geolocation
 from zope.interface import directlyProvides
 
+import json
 import unittest
 
 
@@ -45,7 +46,7 @@ class TestView(unittest.TestCase):
         doc.geolocation = Geolocation(latitude="50.498863", longitude="4.719407")
         doc.reindexObject()
         feature = view.data_geo(api.content.find(portal_type="Document"))
-        self.assertEqual(
-            feature,
-            '{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [4.719407, 50.498863]}, "id": "doc", "properties": {"popup": "<a href=\'http://nohost/plone/doc\' title=\'\'></a>", "color": "green"}}]}',
+        self.assertDictEqual(
+            json.loads(feature),
+            json.loads('{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [4.719407, 50.498863]}, "id": "doc", "properties": {"popup": "<a href=\'http://nohost/plone/doc\' title=\'\'></a>", "color": "green"}}]}'),
         )
