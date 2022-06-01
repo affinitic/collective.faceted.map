@@ -2,5 +2,5 @@
            xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
 
   <include file="configure.zcml" />
-  <include package="collective.geolocationbehavior" />
+
 </configure>

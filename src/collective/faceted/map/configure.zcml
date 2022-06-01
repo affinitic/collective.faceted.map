@@ -9,6 +9,7 @@
 
   <include package=".browser" />
 
+  <include package="collective.geolocationbehavior" />
   <include file="permissions.zcml" />
   <include file="upgrades.zcml" />
 
