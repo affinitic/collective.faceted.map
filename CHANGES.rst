@@ -5,7 +5,8 @@ Changelog
 1.0b8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix faceted map js on page load
+  [boulch]
 
 
 1.0b7 (2022-06-01)
