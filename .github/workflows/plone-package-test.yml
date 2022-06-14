@@ -24,6 +24,10 @@ jobs:
             plone-version: '5.2'
           - python-version: '3.8'
             plone-version: '5.2'
+          - python-version: '3.8'
+            plone-version: '6.0'
+          - python-version: '3.9'
+            plone-version: '6.0'
 
     steps:
     - name: Clone repo
@@ -45,8 +49,8 @@ jobs:
     - name: Install dependencies and run buildout
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        buildout -Nt 5
+        pip install -r requirements${{ matrix.plone-version }}.x.txt
+        buildout -Nt 5 -c plone${{ matrix.plone-version }}.x.cfg
 
     - name: Test
       run: |
