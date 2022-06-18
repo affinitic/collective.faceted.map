@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0b8 (unreleased)
+1.0b8 (2022-06-18)
 ------------------
 
 - Ensure Plone 6 compatibility
