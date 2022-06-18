@@ -42,7 +42,7 @@ class FacetedGeoJSON(BrowserView):
 class FacetedGeoJSONPopup(BrowserView):
     def popup(self, brain):
         obj = brain.getObject()
-        if obj.get("image", None):
+        if getattr(obj, "image", None):
             img_url = "{0}/@@images/image/thumb".format(brain.getURL())
             template = (
                 "<a href='{0}' title='{1}'><img src='{2}' alt='{1}' />"
