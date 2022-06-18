@@ -5,6 +5,9 @@ Changelog
 1.0b8 (unreleased)
 ------------------
 
+- Ensure Plone 6 compatibility
+  [boulch, laulaz]
+
 - Fix image field fetching on objects (for display on map markers popups)
   [laulaz]
 
