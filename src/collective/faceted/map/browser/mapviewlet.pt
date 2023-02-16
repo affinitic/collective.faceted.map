@@ -6,10 +6,26 @@
   <div id="faceted-map-container" class="pat-leaflet" style="width: 100%; height:40em;" data-pat-leaflet="${view/map_configuration}"
     data-geojson=''></div>
   <script type="text/javascript">
+    var refresh_map = function() {
+        var data = $("#faceted-results-items").attr("data-geojson");
+        if ( typeof data != "undefined" && data ) {
+          data = JSON.parse(data);
+          if ( data.features.length > 0 ) {
+            $('#faceted-map-container').trigger('leaflet.refresh', data);
+          }
+        } else {
+            $('#faceted-map-container').trigger('leaflet.refresh', data);
+        }
+    }
+
     jQuery(document).ready(function($) {
+      $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function() {
+          refresh_map();
+      });
+
       $('.button-map').click(function() {
-        $('.button-map').toggle();
-        $('#faceted-map-container').toggleClass('hidden');
+          $('.button-map').toggle();
+          $('#faceted-map-container').toggleClass('hidden');
       });
     });
   </script>

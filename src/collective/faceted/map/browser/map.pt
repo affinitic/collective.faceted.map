@@ -65,25 +65,7 @@
         </div>
       </div>
       <script type="text/javascript">
-        var refresh_map = function() {
-            var data = $("#faceted-results-items").attr("data-geojson");
-            if ( typeof data != "undefined"  && data ) {
-              data = JSON.parse(data);
-              if ( data.features.length > 0 ) {
-                $('#faceted-map-container').trigger('leaflet.refresh', data);
-              }
-            } else {
-                $('#faceted-map-container').trigger('leaflet.refresh', data);
-            }
-        }
-
         jQuery(document).ready(function($) {
-          $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function() {
-              refresh_map();
-          });
-
-          refresh_map();
-
           $('.faceted-map-item').hover(
             function() {
               $('#faceted-map-container').trigger('leaflet.openPopup', $(this).data('index'));

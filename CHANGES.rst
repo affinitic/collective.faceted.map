@@ -5,7 +5,8 @@ Changelog
 1.0b9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improve code to avoid to many refresh of the map
+  [mpeeters]
 
 
 1.0b8 (2022-06-18)
