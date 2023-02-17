@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0b9 (unreleased)
+1.0.0 (2023-02-17)
 ------------------
 
 - Improve code to avoid to many refresh of the map
