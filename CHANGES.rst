@@ -5,7 +5,10 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use native namespace packages (PEP 420). Remove the ``pkg_resources``
+  namespace declarations. Use ``importlib.resources`` in ``update_locale``.
+  This version needs Python 3.10 or later and Plone 6.2.
+  [boulch]
 
 
 1.0.0 (2023-02-17)
