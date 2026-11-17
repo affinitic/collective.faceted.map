@@ -5,6 +5,10 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Run the GitHub Actions tests on Plone 6.2 (Python 3.12 and 3.13) and update
+  the actions. Remove the obsolete Travis CI configuration.
+  [boulch]
+
 - Use native namespace packages (PEP 420). Remove the ``pkg_resources``
   namespace declarations. Use ``importlib.resources`` in ``update_locale``.
   This version needs Python 3.10 or later and Plone 6.2.
