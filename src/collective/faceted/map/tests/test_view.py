@@ -2,11 +2,13 @@
 from collective.faceted.map.testing import COLLECTIVE_FACETED_MAP_INTEGRATION_TESTING
 from collective.faceted.map.utils import add_behavior
 from eea.facetednavigation.interfaces import IFacetedNavigable
+from eea.facetednavigation.layout.interfaces import IFacetedLayout
 from plone import api
 from plone.app.testing import applyProfile
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.formwidget.geolocation.geolocation import Geolocation
+from zope.component import getMultiAdapter
 from zope.interface import directlyProvides
 
 import json
@@ -24,12 +26,13 @@ class TestView(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
     def test_map_view(self):
-        coll = api.content.create(
-            type="Collection", container=self.portal, id="collection"
-        )
-        view = coll.restrictedTraverse("faceted-map")
-        directlyProvides(coll, IFacetedNavigable)
-        self.assertIn("faceted-map", view())
+        add_behavior("Folder", "eea.faceted.navigable")
+        folder = api.content.create(type="Folder", container=self.portal, id="folder")
+        getMultiAdapter((folder, self.request), name="faceted_subtyper").enable()
+        IFacetedLayout(folder).update_layout("faceted-map")
+        html = getMultiAdapter((folder, self.request), name="faceted_query")()
+        self.assertIn('id="faceted-results-items"', html)
+        self.assertIn('href="http://nohost/plone/folder"', html)
 
     def test_geojson_map_view(self):
         coll = api.content.create(

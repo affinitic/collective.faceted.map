@@ -13,6 +13,12 @@ Changelog
 - Add ``plone6.2.x.cfg`` and ``requirements6.2.x.txt`` to test on Plone 6.2.
   [boulch]
 
+- Fix ``test_map_view``: render the map view through ``@@faceted_query`` on a
+  faceted folder, as eea.facetednavigation does. The ``getFolderContents``
+  skin script does not exist in Plone 6. Load eea.facetednavigation in the
+  test layer. Remove ``not_skip`` from the isort configuration.
+  [boulch]
+
 
 1.0.0 (2023-02-17)
 ------------------
