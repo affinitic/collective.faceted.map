@@ -10,6 +10,9 @@ Changelog
   This version needs Python 3.10 or later and Plone 6.2.
   [boulch]
 
+- Add ``plone6.2.x.cfg`` and ``requirements6.2.x.txt`` to test on Plone 6.2.
+  [boulch]
+
 
 1.0.0 (2023-02-17)
 ------------------
