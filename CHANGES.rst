@@ -5,7 +5,26 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add Python 3.14 support (classifier and GitHub Actions).
+  [boulch]
+
+- Run the GitHub Actions tests on Plone 6.2 (Python 3.12 and 3.13) and update
+  the actions. Remove the obsolete Travis CI configuration.
+  [boulch]
+
+- Use native namespace packages (PEP 420). Remove the ``pkg_resources``
+  namespace declarations. Use ``importlib.resources`` in ``update_locale``.
+  This version needs Python 3.10 or later and Plone 6.2.
+  [boulch]
+
+- Add ``plone6.2.x.cfg`` and ``requirements6.2.x.txt`` to test on Plone 6.2.
+  [boulch]
+
+- Fix ``test_map_view``: render the map view through ``@@faceted_query`` on a
+  faceted folder, as eea.facetednavigation does. The ``getFolderContents``
+  skin script does not exist in Plone 6. Load eea.facetednavigation in the
+  test layer. Remove ``not_skip`` from the isort configuration.
+  [boulch]
 
 
 1.0.0 (2023-02-17)

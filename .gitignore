@@ -35,7 +35,6 @@ report.html
 !.gitattributes
 !.gitignore
 !.gitkeep
-!.travis.yml
 !src/collective
 pyvenv.cfg
 share

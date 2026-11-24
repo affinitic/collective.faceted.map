@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
+from importlib.resources import files
+
 import os
-import pkg_resources
 import subprocess
 
 
 domain = 'collective.faceted.map'
-os.chdir(pkg_resources.resource_filename(domain, ''))
+os.chdir(str(files(domain)))
 os.chdir('../../../')
 target_path = 'src/collective/map/'
 locale_path = target_path + 'locales/'

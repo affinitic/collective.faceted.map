@@ -18,9 +18,13 @@ class CollectiveFacetedMapLayer(PloneSandboxLayer):
         # Load any other ZCML that is required for your tests.
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
+        import eea.facetednavigation
+
+        self.loadZCML(package=eea.facetednavigation)
         self.loadZCML(name="testing.zcml", package=collective.faceted.map)
 
     def setUpPloneSite(self, portal):
+        applyProfile(portal, "eea.facetednavigation:default")
         applyProfile(portal, "collective.faceted.map:default")
 
 
