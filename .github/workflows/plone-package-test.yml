@@ -20,6 +20,8 @@ jobs:
             plone-version: '6.2'
           - python-version: '3.13'
             plone-version: '6.2'
+          - python-version: '3.14'
+            plone-version: '6.2'
 
     steps:
     - name: Clone repo

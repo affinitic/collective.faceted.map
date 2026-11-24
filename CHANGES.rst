@@ -5,6 +5,9 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Add Python 3.14 support (classifier and GitHub Actions).
+  [boulch]
+
 - Run the GitHub Actions tests on Plone 6.2 (Python 3.12 and 3.13) and update
   the actions. Remove the obsolete Travis CI configuration.
   [boulch]
