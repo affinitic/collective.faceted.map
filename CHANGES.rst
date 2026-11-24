@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+2.0.0 (2026-11-24)
 ------------------
 
 - Add Python 3.14 support (classifier and GitHub Actions).
