@@ -6,6 +6,92 @@
   <div id="faceted-map-container" class="pat-leaflet" style="width: 100%; height:40em;" data-pat-leaflet="${view/map_configuration}"
     data-geojson=''></div>
   <script type="text/javascript">
+    // pat-leaflet only reads its GeoJSON once, when it initializes: handle the
+    // `leaflet.refresh`, `leaflet.openPopup` and `leaflet.closePopup` events
+    // here, through the pattern instance. When a patched pat-leaflet handles
+    // them itself, leave them to it.
+    (function($) {
+      var container = document.getElementById("faceted-map-container");
+      var pending = null;
+      var attempts = 0;
+      var timer = null;
+
+      var get_pattern = function() {
+        var pattern = container["pattern-leaflet"];
+        // init() is async: the map is usable once it has been given a view
+        if ( pattern && pattern.map && pattern.map._loaded && pattern.marker_cluster ) {
+          return pattern;
+        }
+        return null;
+      };
+
+      var has_own_handler = function(namespace) {
+        var events = $._data(container, "events");
+        return !!(events && events.leaflet && events.leaflet.some(function(handler) {
+          return handler.namespace === namespace;
+        }));
+      };
+
+      var get_markers = function(pattern) {
+        var markers = [];
+        pattern.map.eachLayer(function(layer) {
+          if ( layer instanceof pattern.L.Marker ) {
+            markers.push(layer);
+          }
+        });
+        return markers;
+      };
+
+      // Draw the last received GeoJSON. The faceted query can end before
+      // pat-leaflet is initialized (it loads its chunks asynchronously): keep
+      // the data until the pattern is ready.
+      var draw = function() {
+        if ( pending === null ) {
+          return;
+        }
+        var pattern = get_pattern();
+        if ( !pattern ) {
+          if ( timer === null && attempts < 100 ) {
+            attempts += 1;
+            timer = setTimeout(function() { timer = null; draw(); }, 100);
+          }
+          return;
+        }
+        var data = pending.data;
+        pending = null;
+        pattern.map.invalidateSize();
+        pattern.marker_cluster.clearLayers();
+        pattern.main_marker = null;
+        if ( data && data.features && data.features.length > 0 ) {
+          pattern.init_geojson(pattern.map, data);
+        }
+      };
+
+      container.addEventListener("init.leaflet.patterns", draw);
+
+      $(container).on("leaflet.refresh.facetedmap", function(event, data) {
+        if ( has_own_handler("refresh") ) {
+          return;
+        }
+        pending = {data: data};
+        attempts = 0;
+        draw();
+      });
+
+      $(container).on("leaflet.openPopup.facetedmap leaflet.closePopup.facetedmap", function(event, index) {
+        var action = event.namespace.indexOf("openPopup") !== -1 ? "openPopup" : "closePopup";
+        var pattern = get_pattern();
+        if ( has_own_handler(action) || !pattern ) {
+          return;
+        }
+        var marker = get_markers(pattern)[index];
+        if ( marker ) {
+          marker[action]();
+        }
+      });
+    })(jQuery);
+  </script>
+  <script type="text/javascript">
     var refresh_map = function() {
         var data = $("#faceted-results-items").attr("data-geojson");
         if ( typeof data != "undefined" && data ) {
