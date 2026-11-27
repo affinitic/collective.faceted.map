@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.0.1 (unreleased)
+2.0.1 (2026-11-27)
 ------------------
 
 - Redraw the map markers after each faceted query with the released
