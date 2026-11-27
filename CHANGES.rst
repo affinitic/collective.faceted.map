@@ -5,7 +5,15 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Redraw the map markers after each faceted query with the released
+  pat-leaflet, which reads its GeoJSON only once and has no ``leaflet.refresh``,
+  ``leaflet.openPopup`` or ``leaflet.closePopup`` handlers: handle these events
+  in the viewlet, through the pattern instance. A patched pat-leaflet that
+  handles them itself keeps doing so. Wait for pat-leaflet to be initialized
+  before drawing: the faceted query could end first, leaving the map at 0,0
+  (seen in Firefox). Removes the need for the ``fix-geosearch`` fork of
+  ``plone.formwidget.geolocation``.
+  [thomlamb]
 
 
 2.0.0 (2026-11-24)
